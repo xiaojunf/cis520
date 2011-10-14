@@ -1,0 +1,67 @@
+\section{Decision trees}
+
+\begin{enumerate}
+\item Concrete sample training data.
+  \begin{enumerate}
+  \item The sample entropy $H(Y)$ is $0.985$.
+    \begin{align*}
+      H(Y)= & \;-p(y=+)\log(p=+)-p(y=-)\log p(y=-)\\
+= & \;-4/7\log4/7-3/7\log3/7\\
+= & \;0.985
+    \end{align*}
+
+  \item The information gains are $IG(X_1) = 0.183$ and $IG(X_2) = 0.045$.  
+    \begin{align*}
+      IG(X_{1})= & \; H(y)-H(y|x_{1})\\
+= & \; H(y)-(-7/21\log7/8-1/21\log1/8-5/21\log5/13-8/21\log8/13)\\
+= & \;0.985-0.802=0.183\\
+IG(X_{2})= & \; H(y)-H(y|x_{2})\\
+= & \; H(y)-(-7/21\log7/10-3/21\log3/10-5/21\log5/11-6/21\log6/11)\\
+= & \;0.985-0.940=0.045
+    \end{align*}
+
+  \item The decision tree that would be learned is shown in Figure
+    \ref{fig:decision_tree}.
+    %% The [H], in combination with the float package, forces latex to
+    %% generate the figure in exactly this part of the document
+    %% instead of ``floating'' it to another part.
+    \begin{figure}[H]
+      \centering
+      \tikzstyle{dir}=[->, very thick]
+      \begin{tikzpicture}[auto]
+        \node[rectangle] (X1) at (0,0) {$X_1$};
+        \node (X20) at (-2,-2) {$X_2$};
+        \node (X21) at (2,-2) {$X_2$};
+	\node (leaf1) at (-3,-4) {$+$};
+	\node (leaf2) at (-1,-4) {$+\;<->\;\frac{4}{5}$};
+	\node (leaf3) at (1,-4) {$+\;<->\;\frac{4}{7}$};
+	\node (leaf4) at (3,-4) {$-\;<->\; \frac{5}{6}$};
+
+        \draw[dir] (X1) to [above] node {} (X20);
+        \draw[dir] (X1) to [above] node {} (X21);
+	\draw[dir] (X20) to [above] node {} (leaf1);
+	\draw[dir] (X20) to [above] node {} (leaf2);
+	\draw[dir] (X21) to [above] node {} (leaf3);
+	\draw[dir] (X21) to [above] node {} (leaf4);
+	\node (label1) at (-1.2,-1) {$T$};
+	\node (label2) at (1.2,-1) {$F$};
+	\node (label3) at (-2.8,-3) {$T$};
+	\node (label4) at (-1.3,-3) {$F$};
+	\node (label5) at (1.3,-3) {$T$};
+	\node (label6) at (2.8,-3) {$F$};
+      \end{tikzpicture}
+      \caption{The decision tree that would be learned.}
+      \label{fig:decision_tree}
+    \end{figure}
+  \end{enumerate}
+
+\item Proof that $IG(x,y) = H[x] - H[x \mid y] = H[y] - H[y \mid x]$,
+  starting from the definition in terms of KL-divergence:
+  \begin{align*}
+    IG(x,y)= & \; KL\left(p(x,y)||p(x)p(y)\right)\\
+= & \;-\sum_{x}\sum_{y}p(x,y)\log(\frac{p(x)p(y)}{p(x,y)})\\
+= & \;-\sum_{x}\sum_{y}p(x,y)\log p(x)+\sum_{x}\sum_{y}p(x,y)\log(\frac{p(x,y)}{p(y)})\\
+= & \;-\sum_{x}p(x)\log p(x)-(-\sum_{x}\sum_{y}p(x,y)\log p(x|y))\\
+= & \; H[x]-H[x\mid y]
+    \end{align*}
+\end{enumerate}

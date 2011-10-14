@@ -1,0 +1,731 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options false
+\language english
+\inputencoding latin9
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Double-counting the evidence
+\end_layout
+
+\begin_layout Enumerate
+5 parameters will be needed, P(Y=T), P(
+\begin_inset Formula $X_{1}=T\,|Y=T),\ P(X_{1}=T\,|Y=F)$
+\end_inset
+
+, 
+\begin_inset Formula $P(X_{2}=T\,|Y=F),\ P(X_{2}=T\,|Y=T)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Y$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Naive Bayes error rate
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+since
+\begin_inset Formula $P(X_{1}=T,X_{2}=T,Y=F)=P(X_{1}=T|Y=F)P(X_{2}=T|Y=F)P(Y=F)=0.015$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $P(X_{1}=T,X_{2}=F,Y=F)=P(X_{1}=T|Y=F)P(X_{2}=F|Y=F)P(Y=F)=0.135$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $P(X_{1}=F,X_{2}=T,Y=F)=P(X_{1}=F|Y=F)P(X_{2}=T|Y=F)P(Y=F)=0.035$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $P(X_{1}=F,X_{2}=F,Y=T)=P(X_{1}=F|Y=T)P(X_{2}=F|Y=T)P(Y=T)=0.05$
+\end_inset
+
+.
+ 
+\begin_inset Formula \begin{align*}
+error\ rate= & \;\sum_{X_{1},X_{2},Y}1(Y\ne f(X_{1},X_{2}))P(X_{1},X_{2},Y)\\
+= & \ P(X_{1}=T,X_{2}=T,Y=F)+P(X_{1}=T,X_{2}=F,Y=F)\\
+ & +P(X_{1}=F,X_{2}=T,Y=F)+P(X_{1}=F,X_{2}=F,Y=T)\\
+= & \ 0.235\end{align*}
+
+\end_inset
+
+So, the error rate is 0.235.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P(X_{1}=T,Y=F)=P(X_{1}=T|Y=F)P(Y=F)=0.15$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $P(X_{1}=F,Y=T)=P(X_{1}=F|Y=T)P(Y=T)=0.1$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+so, error rate is 0.25.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P(X_{2}=T,Y=F)=P(X_{2}=T|Y=F)P(Y=F)=0.05$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $P(X_{2}=F,Y=T)=P(X_{2}=F|Y=T)P(Y=T)=0.25$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+so, error rate is 0.30.
+\end_layout
+
+\begin_layout Enumerate
+The error rate is lower using 
+\begin_inset Formula $X_{1},X_{2}$
+\end_inset
+
+together, because we use more independent features to classify Y, which
+ makes the classification more accurately.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+KL divergence for Multinomials.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+No, 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ are not conditionally independent given Y, since 
+\begin_inset Formula $P(X_{2},X_{3}|Y)=P(X_{2}|Y)\ and\ P(X_{2}|Y)=P(X_{3}|Y)$
+\end_inset
+
+, so apparently, 
+\begin_inset Formula $P(X_{2},X_{3}|Y)\ne P(X_{2}|Y)P(X_{3}|Y)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+After adding the 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+, the classification result becomes
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Y
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $P(X_{1}=T,X_{2}=T,X_{3}=T,Y=F)=P(X_{1}=T|Y=F)P(X_{2}=T,X=T|Y=F)P(Y=F)=0.015$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $P(X_{1}=T,X_{2}=F,X_{3}=F,Y=T)=P(X_{1}=T|Y=T)P(X_{2}=F,X_{2}=F|Y=T)P(Y=F)=0.2$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $P(X_{1}=F,X_{2}=T,X_{3}=T,Y=F)=P(X_{1}=F|Y=F)P(X_{2}=T,X_{3}=T|Y=F)P(Y=F)=0.035$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $P(X_{1}=F,X_{2}=F,X_{2}=F,Y=T)=P(X_{1}=F|Y=T)P(X_{2}=F,X_{3}=F|Y=T)P(Y=T)=0.05$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+so, error rate is 0.3.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+This is because, 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+and 
+\begin_inset Formula $X_{3}$
+\end_inset
+
+are actually not independent, but when using Naive Bayes to make decision,
+ they are treated as independent.
+\end_layout
+
+\begin_layout Enumerate
+No, logistic regression doesn't suffer from the same problem, since it calculate
+ p(y|x) directly by estimating the weight.
+\end_layout
+
+\begin_layout Enumerate
+Extra credit
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Decision rule
+\begin_inset Formula \begin{align*}
+\frac{P(Y=T|X_{1}=T,X_{2}=F,X_{3}=F)}{P(Y=F|X_{1}=T,X_{2}=F,X_{3}=F)}> & \ 1\\
+\frac{\frac{P(X_{!}=T|Y=T)P(X_{2}=F|Y=T)P(X_{3}=F|Y=T)P(Y=T)}{P(X_{1})P(X_{2})P(X_{3})}}{\frac{P(X_{!}=T|Y=F)P(X_{2}=F|Y=F)P(X_{3}=F|Y=T)P(Y=F)}{P(X_{1})P(X_{2})P(X_{3})}}> & \ 1\\
+\frac{\frac{P(Y=T|X_{1}=T)P(X_{1}=T)P(Y=T|X_{2}=F)P(X_{2}=F)P(Y=T|X_{3}=F)P(X_{3}=F)P(Y=T)}{P(Y=T)P(Y=T)P(Y=T)}}{\frac{P(Y=T|X_{1}=T)P(X_{1}=T)P(Y=T|X_{2}=F)P(X_{2}=F)P(Y=T|X_{2}=F)P(X_{2}=F)P(Y=F)}{P(Y=T)P(Y=T)}}> & \ 1\\
+\frac{P(Y=T|X_{1}=T)P(Y=T|X_{2}=F)P(Y=T|X_{3}=F)P(Y=T)}{P(Y=F|X_{1}=T)P(Y=F|X_{2}=F)P(Y=F|X_{3}=F)P(Y=F)}> & \;1\\
+\frac{pq^{2}}{(1-p)(1-q)^{2}}> & \ 1\\
+pq^{2}> & (1-q)^{2}-p(1-q)^{2}\\
+p> & \frac{(1-q)^{2}}{q^{2}+(1-q)^{2}}\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Real decision rule
+\begin_inset Formula \begin{align*}
+\frac{P(Y=T|X_{1}=T,X_{2}=F,X_{3}=F)}{P(Y=F|X_{1}=T,X_{2}=F,X_{3}=F)}> & \ 1\\
+\frac{P(Y=T|X_{1}=T)P(Y=T|X_{2}=F)P(Y=T)}{P(Y=F|X_{1}=T)P(Y=F|X_{2}=F))P(Y=F)}> & \;1\\
+\frac{pq}{(1-p)(1-q)}> & \ 1\\
+p> & 1-q\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+figure
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename untitled.jpg
+	scale 60
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Boosting
+\end_layout
+
+\begin_layout Subsection
+Analyzing the training error of boosting
+\end_layout
+
+\begin_layout Enumerate
+Show,
+\begin_inset Formula $\frac{1}{m}\sum_{i=1}^{m}I(H(x_{i})\ne y_{i})\leq\frac{1}{m}\sum_{i=1}^{m}\exp(-f(x_{i})y_{i})$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+If 
+\begin_inset Formula $H(x_{i})=y_{i},\ I(H(x_{i})\ne y_{i})=0\leq\exp(-f(x_{i})y_{i}),$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+if 
+\begin_inset Formula $H(x_{i})\neq y_{i,}\ -f(x_{i})y_{i}>0,\ I(H(x_{i}\neq y_{i}))=1\leq\exp(-f(x_{i})y_{i})$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+so, 
+\begin_inset Formula $\frac{1}{m}\sum_{i=1}^{m}I(H(x_{i})\neq y_{i})\leq\frac{1}{m}\sum_{i=1}^{m}\exp(-f(x_{i})y_{i}).$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

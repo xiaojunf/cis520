@@ -1,0 +1,33 @@
+\section{Fitting distributions with KL divergence}
+\begin{enumerate}
+\item KL divergence for Gaussians. 
+
+\begin{enumerate}
+\item The KL divergence between two univariate Gaussians is given by $f=1/2(x-\mu_{2})^{2}-1/2\sigma^{2}(x-\mu_{2})^{2}$
+and $g=-\log\sigma$. \begin{align*}
+KL(p(x)||q(x))=\int_{-\infty}^{\infty}N(\mu_{1},\sigma^{2})\log\frac{N(\mu_{1},\sigma^{2})}{N(\mu_{2},1)}dx & \;\\
+=\int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}\sigma}e^{\frac{-(x-\mu_{1})^{2}}{2\sigma}}[1/2(x-\mu_{2})^{2}-1/2\sigma^{2}(x-\mu_{2})^{2}]dx+-\log\sigma & \;\\
+=\mathbf{E}_{p}[f(x,\mu_{1},\mu_{2},\sigma)]+g(\sigma) & \;\end{align*}
+ 
+\item The value $\mu_{1}=\mu_{2}$ minimizes $KL(p(x)||q(x))$. \begin{align*}
+0= & \frac{\partial KL(p(x)||q(x))}{\partial\mu_{1}}\;\\
+0= & \frac{\partial E[f(x,\mu_{1},\mu_{2},\sigma)]}{\partial\mu_{1}}+0=\frac{\partial}{\partial\mu_{1}}E[\frac{1}{2}x^{2}+\frac{1}{2}\mu_{2}^{2}-x\mu_{2}-\frac{1}{2\sigma^{2}}x^{2}-\frac{1}{2\sigma^{2}}\mu_{1}^{2}+\frac{1}{\sigma^{2}}x\mu_{1}]\:\\
+=\frac{\partial}{\partial\mu_{1}} & [\frac{1}{2}(\mu_{1}^{2}+\sigma^{2})+\frac{1}{2}\mu_{2}^{2}-\mu_{1}\mu_{2}-\frac{1}{2\sigma^{2}}(\mu_{1}^{2}+\sigma^{2})-\frac{1}{2\sigma^{2}}\mu_{1}^{2}+\frac{1}{\sigma^{2}}\mu_{1}^{2}]=\mu_{1}-\mu_{2}\;\\
+\mu_{1}= & \mu_{2}\end{align*}
+ 
+\end{enumerate}
+\item KL divergence for Multinomials. 
+
+\begin{enumerate}
+\item The KL divergence between two Multinomials is: $KL(p(x)||q(x))=\sum_{i\; odd}\beta log\frac{\beta}{\theta_{i}}+\sum_{i\; even}\alpha log\frac{\alpha}{\theta_{i}}$.
+\item The values $\alpha=\frac{(\prod_{i=even}\theta_{i}/\prod_{i=odd}\theta_{i})^{1/n}}{n((\prod_{i=even}\theta_{i}/\prod_{i=odd}\theta_{i})^{1/n}+1)}$
+and $\beta=\frac{1}{n((\prod_{i=even}\theta_{i}/\prod_{i=odd}\theta_{i})^{1/n}+1)}$
+minimize $KL(p(x)||q(x))$. \begin{align*}
+\textrm{Lagrangian}\;\;\mathcal{L}= & \; KL(p(x)||q(x))+\lambda(n(\alpha+\beta)-1)\\
+= & \;\sum_{i=even}\alpha\log\frac{\alpha}{\theta_{i}}+\sum_{i=odd}\beta\log\frac{\beta}{\theta_{i}}+\lambda(n(\alpha+\beta)-1)\\
+\frac{\partial}{\partial\alpha} & \mathcal{L}=\sum_{i=odd}\log\frac{\beta}{\theta_{i}}+n+\lambda n=0\\
+\frac{\partial}{\partial\beta} & \mathcal{L}=\sum_{i=even}\log\frac{\alpha}{\theta_{i}}+n+\lambda n=0\\
+\frac{\partial}{\partial\lambda} & \mathcal{L}=n(\alpha+\beta)-1=0\end{align*}
+ 
+\end{enumerate}
+\end{enumerate}

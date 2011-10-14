@@ -1,0 +1,39 @@
+\section{Fitting distributions with KL divergence}
+\begin{enumerate}
+\item KL divergence for Gaussians. 
+
+\begin{enumerate}
+\item The KL divergence between two univariate Gaussians is given by $f=\frac{1}{2}(x-\mu_{2})^{2}-\frac{1}{2\sigma^{2}}(x-\mu_{1})^{2}$
+and $g=-log\sigma$. \begin{align*}
+KL(p(x)||q(x))= & \;\mathbf{E}_{p}[log\frac{\frac{1}{\sqrt{2\pi\sigma^{2}}}exp\{-\frac{1}{2\sigma^{2}}(x-\mu_{1})^{2}\}}{\frac{1}{\sqrt{2\pi}}exp\{-\frac{1}{2}(x-\mu_{2})^{2}\}}]\\
+= & \;\mathbf{E}_{p}[-log\sigma+\frac{1}{2}(x-\mu_{2})^{2}-\frac{1}{2\sigma^{2}}(x-\mu_{1})^{2}]\\
+= & \;\mathbf{E}_{p}[-log\sigma]+\mathbf{E}_{p}[\frac{1}{2}(x-\mu_{2})^{2}-\frac{1}{2\sigma^{2}}(x-\mu_{1})^{2}]\\
+= & \;\mathbf{E}_{p}[\frac{1}{2}(x-\mu_{2})^{2}-\frac{1}{2\sigma^{2}}(x-\mu_{1})^{2}]-log\sigma\\
+= & \;\mathbf{E}_{p}[f(x,\mu_{1},\mu_{2},\sigma)]+g(\sigma)\end{align*}
+ 
+\item The value $\mu_{1}=\ldots$ minimizes $KL(p(x)||q(x))$. \begin{align*}
+0= & \;\frac{\partial KL(p(x)||q(x))}{\partial\mu_{1}}\\
+0= & \;\frac{\partial}{\partial\mu_{1}}\mathbf{E}_{p}[\frac{1}{2}(x-\mu_{2})^{2}-\frac{1}{2\sigma^{2}}(x-\mu_{1})^{2}]\\
+0= & \;\frac{\partial}{\partial\mu_{1}}\mathbf{E}_{p}[\frac{1}{2}x^{2}-x\mu_{2}+\frac{1}{2}\mu_{2}^{2}-\frac{1}{2\sigma^{2}}x^{2}+\frac{x\mu_{1}}{\sigma^{2}}-\frac{1}{2\sigma^{2}}\mu_{1}^{2}]\\
+0= & \;\frac{\partial}{\partial\mu_{1}}((\frac{1}{2}-\frac{1}{2\sigma^{2}})\mathbf{E}_{p}[x^{2}]+(\frac{\mu_{1}}{\sigma^{2}}-\mu_{2})\mathbf{E}_{p}[x]+\frac{1}{2}\mu_{2}^{2}-\frac{1}{2\sigma^{2}}\mu_{1}^{2})\\
+0= & \;\frac{\partial}{\partial\mu_{1}}((\frac{1}{2}-\frac{1}{2\sigma^{2}})(\mu_{1}^{2}+\sigma^{2})+(\frac{\mu_{1}}{\sigma^{2}}-\mu_{2})\mu_{1}+\frac{1}{2}\mu_{2}^{2}-\frac{1}{2\sigma^{2}}\mu_{1}^{2})\\
+0= & \;1\mu_{1}-\mu_{2}\\
+\mu_{1}= & \;\mu_{2}\end{align*}
+ 
+\end{enumerate}
+\item KL divergence for Multinomials. 
+
+\begin{enumerate}
+\item The KL divergence between two Multinomials is: $KL(p(x)||q(x))=\sum_{i\; odd}\beta log\frac{\beta}{\theta_{i}}+\sum_{i\; even}\alpha log\frac{\alpha}{\theta_{i}}$.
+\item The values $\alpha=\frac{(\frac{\prod_{i\; even}\theta_{i}}{\prod_{i\; odd}\theta_{i}})^{\frac{1}{n}}}{n(1+(\frac{\prod_{i\; even}\theta_{i}}{\prod_{i\; odd}\theta_{i}})^{\frac{1}{n}})}$
+and $\beta=\frac{1}{n(1+(\frac{\prod_{i\; even}\theta_{i}}{\prod_{i\; odd}\theta_{i}})^{\frac{1}{n}})}$
+minimize $KL(p(x)||q(x))$. \begin{align*}
+\textrm{Lagrangian}\;\;\mathcal{L}= & \;\sum_{i\; odd}\beta log\frac{\beta}{\theta_{i}}+\sum_{i\; even}\alpha log\frac{\alpha}{\theta_{i}}+\lambda(n(\alpha+\beta)-1)\\
+0= & \;\frac{\partial\mathcal{L}}{\partial\alpha}=\;\sum_{i\; even}log\frac{\alpha}{\theta_{i}}+n+\lambda n=\; nlog\alpha-\sum_{i\; even}log\theta_{i}+n+\lambda n\\
+0= & \;\frac{\partial\mathcal{L}}{\partial\beta}=\;\sum_{i\; odd}log\frac{\beta}{\theta_{i}}+n+\lambda n=\; nlog\beta-\sum_{i\; odd}log\theta_{i}+n+\lambda n\\
+0= & \;\frac{\partial\mathcal{L}}{\partial\lambda}=\; n(\alpha+\beta)-1\\
+nlog\alpha-\sum_{i\; even}log\theta_{i}= & \; nlog\beta-\sum_{i\; odd}log\theta_{i}\\
+\frac{\alpha}{\frac{1}{n}-\alpha}= & (\frac{\prod_{i\; even}\theta_{i}}{\prod_{i\; odd}\theta_{i}})^{\frac{1}{n}}\end{align*}
+ 
+\end{enumerate}
+\end{enumerate}

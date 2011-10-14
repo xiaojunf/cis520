@@ -1,0 +1,146 @@
+#LyX file created by tex2lyx 1.6.7
+\lyxformat 264
+\begin_document
+\begin_header
+\textclass article
+\language english
+\inputencoding latin9
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+
+Fitting distributions with KL divergence
+\end_layout
+
+\begin_layout Enumerate
+
+KL divergence for Gaussians.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+The KL divergence between two univariate Gaussians is given by 
+\begin_inset Formula $f=\frac{1}{2}(x-\mu_{2})^{2}-\frac{1}{2\sigma^{2}}(x-\mu_{1})^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $g=-log\sigma$
+\end_inset
+
+. 
+\begin_inset Formula \begin{align*}
+KL(p(x)||q(x))= & \;\mathbf{E}_{p}[log\frac{\frac{1}{\sqrt{2\pi\sigma^{2}}}exp\{-\frac{1}{2\sigma^{2}}(x-\mu_{1})^{2}\}}{\frac{1}{\sqrt{2\pi}}exp\{-\frac{1}{2}(x-\mu_{2})^{2}\}}]\\
+= & \;\mathbf{E}_{p}[-log\sigma+\frac{1}{2}(x-\mu_{2})^{2}-\frac{1}{2\sigma^{2}}(x-\mu_{1})^{2}]\\
+= & \;\mathbf{E}_{p}[-log\sigma]+\mathbf{E}_{p}[\frac{1}{2}(x-\mu_{2})^{2}-\frac{1}{2\sigma^{2}}(x-\mu_{1})^{2}]\\
+= & \;\mathbf{E}_{p}[\frac{1}{2}(x-\mu_{2})^{2}-\frac{1}{2\sigma^{2}}(x-\mu_{1})^{2}]-log\sigma\\
+= & \;\mathbf{E}_{p}[f(x,\mu_{1},\mu_{2},\sigma)]+g(\sigma)\end{align*}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+The value 
+\begin_inset Formula $\mu_{1}=\ldots$
+\end_inset
+
+ minimizes 
+\begin_inset Formula $KL(p(x)||q(x))$
+\end_inset
+
+. 
+\begin_inset Formula \begin{align*}
+0= & \;\frac{\partial KL(p(x)||q(x))}{\partial\mu_{1}}\\
+0= & \;\frac{\partial}{\partial\mu_{1}}\mathbf{E}_{p}[\frac{1}{2}(x-\mu_{2})^{2}-\frac{1}{2\sigma^{2}}(x-\mu_{1})^{2}]\\
+0= & \;\frac{\partial}{\partial\mu_{1}}\mathbf{E}_{p}[\frac{1}{2}x^{2}-x\mu_{2}+\frac{1}{2}\mu_{2}^{2}-\frac{1}{2\sigma^{2}}x^{2}+\frac{x\mu_{1}}{\sigma^{2}}-\frac{1}{2\sigma^{2}}\mu_{1}^{2}]\\
+0= & \;\frac{\partial}{\partial\mu_{1}}((\frac{1}{2}-\frac{1}{2\sigma^{2}})\mathbf{E}_{p}[x^{2}]+(\frac{\mu_{1}}{\sigma^{2}}-\mu_{2})\mathbf{E}_{p}[x]+\frac{1}{2}\mu_{2}^{2}-\frac{1}{2\sigma^{2}}\mu_{1}^{2})\\
+0= & \;\frac{\partial}{\partial\mu_{1}}((\frac{1}{2}-\frac{1}{2\sigma^{2}})(\mu_{1}^{2}+\sigma^{2})+(\frac{\mu_{1}}{\sigma^{2}}-\mu_{2})\mu_{1}+\frac{1}{2}\mu_{2}^{2}-\frac{1}{2\sigma^{2}}\mu_{1}^{2})\\
+0= & \;1\mu_{1}-\mu_{2}\\
+\mu_{1}= & \;\mu_{2}\end{align*}
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+KL divergence for Multinomials.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+The KL divergence between two Multinomials is: 
+\begin_inset Formula $KL(p(x)||q(x))=\sum_{i\; odd}\beta log\frac{\beta}{\theta_{i}}+\sum_{i\; even}\alpha log\frac{\alpha}{\theta_{i}}$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Enumerate
+
+The values 
+\begin_inset Formula $\alpha=\frac{(\frac{\prod_{i\; even}\theta_{i}}{\prod_{i\; odd}\theta_{i}})^{\frac{1}{n}}}{n(1+(\frac{\prod_{i\; even}\theta_{i}}{\prod_{i\; odd}\theta_{i}})^{\frac{1}{n}})}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta=\frac{1}{n(1+(\frac{\prod_{i\; even}\theta_{i}}{\prod_{i\; odd}\theta_{i}})^{\frac{1}{n}})}$
+\end_inset
+
+ minimize 
+\begin_inset Formula $KL(p(x)||q(x))$
+\end_inset
+
+. 
+\begin_inset Formula \begin{align*}
+\textrm{Lagrangian}\;\;\mathcal{L}= & \;\sum_{i\; odd}\beta log\frac{\beta}{\theta_{i}}+\sum_{i\; even}\alpha log\frac{\alpha}{\theta_{i}}+\lambda(n(\alpha+\beta)-1)\\
+0= & \;\frac{\partial\mathcal{L}}{\partial\alpha}=\;\sum_{i\; even}log\frac{\alpha}{\theta_{i}}+n+\lambda n=\; nlog\alpha-\sum_{i\; even}log\theta_{i}+n+\lambda n\\
+0= & \;\frac{\partial\mathcal{L}}{\partial\beta}=\;\sum_{i\; odd}log\frac{\beta}{\theta_{i}}+n+\lambda n=\; nlog\beta-\sum_{i\; odd}log\theta_{i}+n+\lambda n\\
+0= & \;\frac{\partial\mathcal{L}}{\partial\lambda}=\; n(\alpha+\beta)-1\\
+nlog\alpha-\sum_{i\; even}log\theta_{i}= & \; nlog\beta-\sum_{i\; odd}log\theta_{i}\\
+\frac{\alpha}{\frac{1}{n}-\alpha}= & (\frac{\prod_{i\; even}\theta_{i}}{\prod_{i\; odd}\theta_{i}})^{\frac{1}{n}}\end{align*}
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

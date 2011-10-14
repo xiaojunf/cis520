@@ -1,0 +1,780 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+CIS 520, Machine Learning, Fall 2011: Assignment 3 Due: Wednesday, October
+ 12th, 4pm, in Levine 459
+\end_layout
+
+\begin_layout Author
+Zheyin Zhao
+\end_layout
+
+\begin_layout Section
+Linear Regression and LOOCV
+\end_layout
+
+\begin_layout Enumerate
+we know that 
+\begin_inset Formula $\hat{w}=(X^{T}X)^{-1}X^{T}Y$
+\end_inset
+
+, the time complexity of computing w is 
+\begin_inset Formula $m^{2}(n-1)+m^{3}+m^{2}(n-1)+m(n-1)$
+\end_inset
+
+; and 
+\begin_inset Formula $\hat{Y}=X\hat{w}$
+\end_inset
+
+,the time complexity of computing y is 
+\begin_inset Formula $m^{2}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $LOOCV=\sum_{i=1}^{n}(Y_{i}-\hat{Y}_{i}^{(-i)})^{2}$
+\end_inset
+
+, and time complexity of computing is 1; thus the complexity of computing
+ LOOCV is 
+\end_layout
+
+\begin_layout Enumerate
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\hat{Y}_{i}=\sum_{j=1}^{n}H_{ij}Y_{i}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $SSE_{z}=\sum_{j=1}^{n}(Z_{j}-\hat{Z}_{j})^{2}=\sum_{j\neq i}(Z_{j}-\hat{Z}_{j})^{2}+\sum_{j=i}(Z_{j}-\hat{Z}_{j})^{2}=\sum_{j\neq i}(Y_{j}-\hat{Z}_{j})^{2}+\sum_{j=i}(\hat{Y}_{i}^{(-i)}-\hat{Z}_{j})^{2}.$
+\end_inset
+
+ if 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\hat{Z}_{j}=\hat{Y}^{(-i)}$
+\end_inset
+
+,
+\begin_inset Newline newline
+\end_inset
+
+ then 
+\begin_inset Formula $SSE_{z}==\sum_{j\neq i}(Y_{j}-\hat{Y}_{j}^{(-i)})^{2}+\sum_{j=i}(\hat{Y}_{i}^{(-i)}-\hat{Y}_{j}^{(-i)})^{2}=\sum_{j\neq i}(Y_{j}-\hat{Y}_{j}^{(-i)})^{2}$
+\end_inset
+
+, and we know LOOCV minimize 
+\begin_inset Formula $\sum_{j\neq i}(Y_{j}-\hat{Y}_{j}^{(-i)})^{2}$
+\end_inset
+
+, thus 
+\begin_inset Formula $\hat{Y}^{(-i)}$
+\end_inset
+
+minimize SSE for Z.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\hat{Y}_{i}^{(-i)}=\sum_{k=1}^{n}H_{jk}Z_{j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\hat{Y}_{i}-\hat{Y}_{i}^{(-i)}=\sum_{j=1}^{n}H_{ij}Y_{i}-\sum_{k=1}^{n}H_{jk}Z_{j}$
+\end_inset
+
+, according to the definition of 
+\begin_inset Formula $Z_{j}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{j=1}^{n}H_{ij}Y_{i}-\sum_{k=1}^{n}H_{jk}Z_{j} & = & \sum_{j\neq i}H_{jk}Y_{j}-\sum_{j\neq i}H_{jk}Y_{j}+H_{ii}Y_{i}\text{-}H_{ii}\hat{Y}_{i}^{(-i)}=H_{ii}Y_{i}\text{-}H_{ii}\hat{Y}_{i}^{(-i)}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+based on the result of 4and 5 
+\begin_inset Formula $\hat{Y}_{i}-\hat{Y}_{i}^{(-i)}=H_{ii}Y_{i}\text{-}H_{ii}\hat{Y}_{i}^{(-i)}$
+\end_inset
+
+, thus 
+\begin_inset Formula $\hat{Y}_{i}^{(-i)}=\frac{\hat{Y}_{i}-H_{ii}Y_{i}}{\text{1-}H_{ii}},and$
+\end_inset
+
+
+\begin_inset Formula $LOOCV=\sum_{i=1}^{n}(Y_{i}-\hat{Y}_{i}^{(-i)})^{2}=\sum_{i=1}^{n}(\frac{Y_{i}-\hat{Y}_{i}}{\text{1-}H_{ii}})^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Logistic regression and Naive Bayes
+\end_layout
+
+\begin_layout Enumerate
+(i) Naive Bayes: (g) Pr(X, Y )
+\begin_inset Newline newline
+\end_inset
+
+(ii) logistic regression: (c) Pr(Y | X)
+\end_layout
+
+\begin_layout Enumerate
+for logistic regression, we have 
+\begin_inset Formula $P(Y=1|X)=\frac{1}{1+\exp\{w_{0}+w^{T}X\}}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+derive it: 
+\begin_inset Formula 
+\begin{eqnarray*}
+P(Y & = & 1|X)=\frac{P(Y=1)P(X|Y=1)}{P(Y=1)P(X|Y=1)+P(Y=0)P(X|Y=0)}\\
+ & = & \frac{1}{1+\frac{P(Y=0)P(X|Y=0)}{P(Y=1)P(X|Y=1)}}\\
+ & = & \frac{1}{1+\exp(\log\frac{P(Y=0)P(X|Y=0)}{P(Y=1)P(X|Y=1)})}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+plug in the known distribution: 
+\begin_inset Formula 
+\begin{eqnarray*}
+P(Y & = & 1)=\pi\\
+P(X_{j}|Y=1) & = & \theta_{j1}^{X_{j}}(1-\theta_{j1})^{1-X_{j}}\\
+P(X_{j}|Y=0) & = & \theta_{j0}^{X_{j}}(1-\theta_{j0})^{1-X_{j}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+we have: 
+\begin_inset Formula 
+\begin{eqnarray*}
+\log\frac{P(Y=0)P(X|Y=0)}{P(Y=1)P(X|Y=1)}\\
+=\log\frac{P(Y=0)}{P(Y=1)}+ & \sum_{j}\log\frac{P(X_{j}|Y=0)}{P(X_{j}|Y=1)}\\
+=\log\frac{1-\pi}{\pi} & +\sum_{j}\log\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j1}(1-\theta_{j0})}X_{j} & +\sum_{j}\log\frac{1-\theta_{j0}}{1-\theta_{j1}}\\
+=w_{0}+w^{T}X
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Double-counting the evidence
+\end_layout
+
+\begin_layout Enumerate
+5 parameters is needed, namely the 
+\begin_inset Formula $P(Y=T),P(X_{1}=T,Y=T),P(X_{1}=T,Y=F),P(X_{2}=T,Y=T),P(X_{2}=T,Y=F)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Y$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+(a) error_rate = 
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{X_{1},X_{2},Y}1(Y\neq f(X_{1},X_{2})P(X_{1},X_{2},Y))\\
+=P(X_{1}=T,X_{2}=T,Y=F)+P(X_{1}=T,X_{2}=F,Y=F)\\
++P(X_{1}=F,X_{2}=T,Y=F)+P(X_{1}=F,X_{2}=F,Y=T)\\
+=P(Y=F)P(X_{1}=T|Y=F)P(X_{2}=T|Y=F)+P(Y=F)P(X_{1}=T|Y=F)P(X_{2}=F|Y=F)\\
++P(Y=F)P(X_{1}=F|Y=F)P(X_{2}=T|Y=F)+P(Y=T)P(X_{1}=F|Y=T)P(X_{2}=F|Y=T)\\
+=0.5*0.3*0.1+0.5*0.3*0.9+0.5*0.7*0.1+0.5*0.2*0.5\\
+=0.015+0.135+0.035+0.05=0.235
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(b)error_rate by 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ =
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{X_{1},Y}1(Y\neq f(X_{1})P(X_{1},Y)) & = & P(Y=T,X_{1}=F)+P(Y=F,X_{1}=T)\\
+ & = & P(Y=T)P(X_{1}=F|Y=T)+P(Y=F)P(X_{1}=T|Y=F)\\
+ & = & 0.5*0.2+0.5*0.3=0.25
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(c)error_rate by 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ = 
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{X_{2},Y}1(Y\neq f(X_{2})P(X_{2},Y)) & = & P(Y=T,X_{2}=F)+P(Y=F,X_{2}=T)\\
+ & = & P(Y=T)P(X_{2}=F|Y=T)+P(Y=F)P(X_{2}=T|Y=F)\\
+ & = & 0.5*0.5+0.5+0.1=0.3
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(d) error rate is lower using 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ together, since combining the 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+could make model more accurate, and lower the test error.
+\end_layout
+
+\begin_layout Enumerate
+(a) 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+and 
+\begin_inset Formula $X_{3}$
+\end_inset
+
+are not conditionally independent on Y, since 
+\begin_inset Formula $P(X_{2},X_{3}|Y)=P(X_{2}|Y)\neq P(X_{2}|Y)P(X_{2}|Y)=P(X_{2}|Y)P(X_{3}|Y)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(b) error_rate is 
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{X_{1},X_{2},X_{3},Y}1(Y\neq f(X_{1},X_{2},X_{3})P(X_{1},X_{2},X_{3},Y))\\
+=P(X_{1}=T,X_{2}=T,X_{3}=T,Y=F)+P(X_{1}=T,X_{2}=F,X_{3}=F,Y=F)\\
++P(X_{1}=F,X_{2}=T,X_{3}=T,Y=F)+P(X_{1}=F,X_{2}=F,X_{3}=F,Y=T)\\
+=P(Y=F)P(X_{1}=T|Y=F)P(X_{2}=T|Y=F)+P(Y=F)P(X_{1}=T|Y=F)P(X_{2}=F|Y=F)\\
++P(Y=F)P(X_{1}=F|Y=F)P(X_{2}=T|Y=F)+P(Y=T)P(X_{1}=F|Y=T)P(X_{2}=F|Y=T)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Naive Bayes get worse since 
+\begin_inset Formula $X_{3}$
+\end_inset
+
+is not conditionally independently of 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+, thus the addition of 
+\begin_inset Formula $X_{3}$
+\end_inset
+
+will not improve the Naive Bayes decision accuracy.
+\end_layout
+
+\begin_layout Enumerate
+Logstic Regression won't suffer from the same problem, since it does not
+ assume the conditional independence of input variables, and the objective
+ function would cast more accurate with the addtional variables.
+\end_layout
+
+\begin_layout Enumerate
+(a) 
+\end_layout
+
+\begin_layout Section
+Boosting
+\end_layout
+
+\begin_layout Subsection
+Analyzing the training error of boosting
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $H(x)=sign(f(x))=sign(\sum_{t=1}^{T}a_{t}h_{t}(x))$
+\end_inset
+
+, then when 
+\begin_inset Formula $H(x_{i})\neq y_{i}and-f(x_{i})y_{i}\geq0,I(H(x_{i})\neq y_{i})=1\leq exp(-f(x_{i})y_{i})$
+\end_inset
+
+, 
+\begin_inset Newline newline
+\end_inset
+
+when 
+\begin_inset Formula $H(x_{i})=y_{i},I(H(x_{i})\neq y_{i})=0<exp(-f(x_{i})y_{i})$
+\end_inset
+
+ ; thus we have 
+\begin_inset Formula $\frac{1}{m}\sum_{i}I(H(x_{i})\neq y_{i})\leq\frac{1}{m}\sum_{i}exp(-f(x_{i})y_{i})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\epsilon_{t}=\sum_{i}D_{t}(i)I(y_{i}\neq h_{t}(x_{i}))$
+\end_inset
+
+, and 
+\begin_inset Formula $\alpha_{t}=\frac{1}{2}\ln(\frac{1-\epsilon_{t}}{\epsilon_{t}})$
+\end_inset
+
+, we have 
+\begin_inset Formula $Z_{t}=\sum_{i=1}^{m}D_{t}(i)\exp(-a_{t}y_{i}h_{t}(x_{i}))$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+hence 
+\begin_inset Formula 
+\begin{eqnarray*}
+\prod_{t=1}^{T}Z_{t}=Z_{t}\prod_{t=1}^{T-1}Z_{t}=\sum_{i=1}^{m}D_{T}(i)\exp(-y_{i}\alpha_{T}h_{T}(x_{i}))\prod_{t=1}^{T-1}Z_{t}\\
+=\prod_{t=1}^{T-1}Z_{t}\sum_{i=1}^{m}D_{T-1}(i)\exp(-y_{i}\alpha_{T-1}h_{T-1}(x_{i}))\exp(-y_{i}\alpha_{T}h_{T}(x_{i}))/Z_{T-1}\\
+=\prod_{t=1}^{T-1}Z_{t}\sum_{i=1}^{m}D_{1}(i)\prod_{t=2}^{T}\exp(-y_{i}\alpha_{t}h_{t}(x_{i}))/\prod_{t=2}^{T-1}Z_{t}=\frac{1}{m}\sum_{i=1}^{m}\prod_{t=1}^{T}\exp(-y_{i}\alpha_{t}h_{t}(x_{i})),\\
+=\frac{1}{m}\sum_{i=1}^{m}\exp(-y_{i}\sum_{t=1}^{T}\alpha_{t}h_{t}(x_{i}))=\frac{1}{m}\sum\exp(-f(x_{i})y_{i})_{i=1}^{m}\\
+\ since\ D_{1}(i)=1/m\ and\ \sum_{i=1}^{m}D_{t}(i)=1
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+we have 
+\begin_inset Formula 
+\begin{eqnarray*}
+Z_{t} & = & \sum_{i=1}^{m}D_{t}(i)\exp(-y_{i}\alpha_{t}h_{t}(x_{i}))=\sum_{y_{i}\neq h(x_{i})}D(i)\exp(-y_{i}h(x_{i})\alpha_{t})+\sum_{y_{i}=h(x_{i})}D(i)\exp(-y_{i}h(x_{i})\alpha_{t})\\
+ & = & \sum_{y_{i}h(x_{i})=-1}D(i)I(y_{i}\neq h(x_{i}))\exp(\alpha_{t})+\sum_{y_{i}h(x_{i})=1}D(i)I(y_{i}=h(x_{i}))\exp(-\alpha_{t})\\
+ & = & (1-\epsilon_{t})\exp(-\alpha_{t})+\epsilon_{t}\exp(\alpha_{t})
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+calculating the first-order derivative of 
+\begin_inset Formula $Z_{t}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\frac{\partial Z_{t}}{\partial\alpha_{t}}=-(1-\epsilon_{t})\frac{1}{\exp(\alpha_{t}^{*})}+\epsilon_{t}\exp(\alpha_{t}^{*})=0$
+\end_inset
+
+, thus 
+\begin_inset Formula $\alpha_{t}^{*}=\frac{1}{2}\log(\frac{1-\epsilon_{t}}{\epsilon_{t}})$
+\end_inset
+
+ when 
+\begin_inset Formula $Z_{t}$
+\end_inset
+
+ reaches its minimum.
+\end_layout
+
+\begin_layout Enumerate
+plug in the value of 
+\begin_inset Formula $\alpha_{t}^{*}=\frac{1}{2}\log(\frac{1-\epsilon_{t}}{\epsilon_{t}})$
+\end_inset
+
+, 
+\begin_inset Formula $Z_{t}=(1-\epsilon_{t})\exp(-\alpha_{t})+\epsilon_{t}\exp(\alpha_{t})=2(\epsilon_{t}(1-\epsilon_{t}))^{1/2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Z_{t}=2\sqrt{\epsilon_{t}(1-\epsilon_{t})}=\sqrt{4(\frac{1}{2}-\gamma_{t})(\frac{1}{2}+\gamma_{t})}=\sqrt{1-4\gamma_{t}^{2}}\leq\sqrt{\exp(4\gamma_{t}^{2})}=\exp(2\gamma_{t}^{2})$
+\end_inset
+
+, since 
+\begin_inset Formula $0<2\gamma_{t}=1-\epsilon_{t}<1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+we assume there is no classifier h that its training error is lower than
+ 0.5, then we choose one classifier 
+\begin_inset Formula $h_{t}$
+\end_inset
+
+, reverse all its prediction results and make it 
+\begin_inset Formula $\sim h_{t}$
+\end_inset
+
+, since the prediction labels are all binary, thus now the error rate is
+ 
+\begin_inset Formula $1-\epsilon_{t}$
+\end_inset
+
+, since 
+\begin_inset Formula $\epsilon_{t}>0.5,\ 1-\epsilon_{t}<0.5$
+\end_inset
+
+, such classifier exists.
+\end_layout
+
+\begin_layout Enumerate
+if 
+\begin_inset Formula $\epsilon_{t}=0.5,$
+\end_inset
+
+at certain round t, 
+\begin_inset Formula $D_{t+1}(i)=\frac{D_{t}(i)\exp(-\alpha_{t}y_{i}h_{t}(x_{i}))}{Z_{t}}=D_{t}(i)$
+\end_inset
+
+, when 
+\begin_inset Formula $\alpha_{t}=\frac{1}{2}\ln(\frac{1-\epsilon_{t}}{\epsilon_{t}})=0$
+\end_inset
+
+, 
+\begin_inset Formula $D_{t}(i)$
+\end_inset
+
+ stays the same and the training error get "stuck".
+\end_layout
+
+\begin_layout Subsection
+Adaboost on a toy dataset
+\end_layout
+
+\begin_layout Enumerate
+dd
+\end_layout
+
+\begin_layout Enumerate
+the training error of Adaboost is 0.
+\end_layout
+
+\begin_layout Enumerate
+the above dataset is not linearly separable, since any line drawn on the
+ plot cannot classify them into two subgroups with the same sign.
+ And that's why Adaboost does better than a decision stump, because Adaboost
+ use two level of reweight, one level is the linear combination of different
+ input variables, another level is the linear combination of models, this
+ allows Adaboost to draw 
+\begin_inset Quotes eld
+\end_inset
+
+polyline" to classify dataset, and result in more accuracy than the decision
+ stumps.
+\end_layout
+
+\end_body
+\end_document

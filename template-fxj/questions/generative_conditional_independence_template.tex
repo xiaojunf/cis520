@@ -1,0 +1,19 @@
+\section{Conditional independence in probability models}
+\begin{enumerate}
+\item We can write $p(x_{i})=\sum_{j=1}^{k}p(x_{i}|z_{i}=j)p(z_{i}=j)=\sum_{j=1}^{k}f_{j}(x_{i})\pi_{j}$
+because the probablity of x take the value of x\_\{i\} equals the
+sum of probablity of x=x\_\{i\} in every possible distribution, which
+is marginalization. 
+
+\item The formula for $p(x_{1},\dots,x_{n})$ is $\prod_{i=1}^{n}\sum_{j=1}^{k}f_{j}(x_{i})\pi_{j}$ by the derivation
+below (simply by applying the chain rule). \begin{align*}
+p(x_{1},\dots,x_{n})= & \;\prod_{i=1}^{n}p(x_{i})\\
+= & \;\prod_{i=1}^{n}\sum_{j=1}^{k}f_{j}(x_{i})\pi_{j}\end{align*}
+
+\item The formula for $p(z_{u}=v\mid x_{1},\dots,x_{n})$ is $\frac{f_{v}(x_{u})\pi_{v}}{\sum_{j=1}^{k}f_{v}(x_{u})\pi_{j}}$ by
+the derivation below (simply by applying the bayes rule). \begin{align*}
+p(z_{u}=v\mid x_{1},\dots,x_{n})= & \;\frac{p(x_{1},\dots,x_{n}\mid z_{u}=v)p(z_{u}=v)}{p(x_{1},\dots,x_{n})}\\
+= & \;\frac{f_{v}(x_{u})\prod_{i=1}^{n}\sum_{j\neq u}^{k}f_{j}(x_{i})\pi_{v}}{\prod_{i=1}^{n}\sum_{j=1}^{k}f_{j}(x_{i})\pi_{j}}\\
+=\; & \frac{f_{v}(x_{u})\pi_{v}}{\sum_{j=1}^{k}f_{v}(x_{u})\pi_{j}}\end{align*}
+ 
+\end{enumerate}

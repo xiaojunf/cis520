@@ -1,0 +1,119 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section
+High dimensional hi-jinx
+\end_layout
+
+\begin_layout Enumerate
+Intra-class distance.
+ 
+\begin_inset Formula \begin{align*}
+\E[(X-X')^{2}]= & \E[X^{2}-2XX^{'}+X^{'2}]\\
+= & \E[X^{2}]-2\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Inter-class distance.
+ 
+\begin_inset Formula \begin{align*}
+\E[(X-X')^{2}]= & \;\ldots\\
+= & \;\ldots\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Intra-class distance, m-dimensions.
+ 
+\begin_inset Formula \begin{align*}
+\E[\sum_{j=1}^{m}(X_{j}-X'_{j})^{2}]= & \;\ldots\\
+= & \;\ldots\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Inter-class distance, m-dimensions.
+ 
+\begin_inset Formula \begin{align*}
+\E[\sum_{j=1}^{m}(X_{j}-X'_{j})^{2}]= & \;\ldots\\
+= & \;\ldots\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The ratio of expected intra-class distance to inter-class distance is: 
+\begin_inset Formula $\ldots$
+\end_inset
+
+.
+ As 
+\begin_inset Formula $m$
+\end_inset
+
+ increases towards 
+\begin_inset Formula $\infty$
+\end_inset
+
+, this ratio approaches 
+\begin_inset Formula $\ldots$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_body
+\end_document

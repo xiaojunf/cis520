@@ -1,0 +1,108 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Conditional independence in probability models
+\end_layout
+
+\begin_layout Enumerate
+We can write 
+\begin_inset Formula $p(x_{i})=\sum_{j}f_{j}(x_{i})\pi_{j}$
+\end_inset
+
+ because according to marginalization, 
+\begin_inset Formula \begin{eqnarray*}
+p(x_{i}) & = & \sum_{j=1}^{k}p(x_{i},z_{i}=j)\\
+ & = & \sum_{j=1}^{k}p(x_{i}|z_{i}=j)p(z_{i}=j)\\
+ & = & \sum_{j}f_{j}(x_{i})\pi_{j}\end{eqnarray*}
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+The formula for 
+\begin_inset Formula $p(x_{1},\dots,x_{n})$
+\end_inset
+
+ is 
+\begin_inset Formula $\prod_{i=1}^{n}\sum_{j}f_{j}(x_{i})\pi_{j}$
+\end_inset
+
+ by the derivation below.
+ 
+\begin_inset Formula \begin{align*}
+p(x_{1},\dots,x_{n})= & \;\prod_{i=1}^{n}p(x_{i})\\
+= & \;\prod_{i=1}^{n}\sum_{j}f_{j}(x_{i})\pi_{j}\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The formula for 
+\begin_inset Formula $p(z_{u}=v\mid x_{1},\dots,x_{n})$
+\end_inset
+
+ is 
+\begin_inset Formula $\ldots$
+\end_inset
+
+ by the derivation below.
+ 
+\begin_inset Formula \begin{align*}
+p(z_{u}=v\mid x_{1},\dots,x_{n})= & \;\frac{p(x_{1},\dots,x_{n}|z_{u}=v)p(z_{u}=v)}{p(x_{1},\dots,x_{n})}\\
+= & \;\frac{p(x_{1}|z_{u}=v)...p(x_{u}|z_{u}=v)...p(x_{n}|z_{u}=v)p(z_{u}=v)}{p(x_{1},\dots,x_{n})}\\
+= & \;\frac{(\prod_{i\neq u}p(x_{i}))*f_{v}(x_{u})\pi_{v}}{\prod_{i=1}^{n}p(x_{i})}\\
+= & \;\frac{f(x_{u})\pi_{v}}{p(x_{u})}\\
+= & \;\frac{f(x_{u})\pi_{v}}{\sum_{j=1}^{k}f_{j}(x_{u})\pi_{j}}\end{align*}
+
+\end_inset
+
+ 
+\end_layout
+
+\end_body
+\end_document

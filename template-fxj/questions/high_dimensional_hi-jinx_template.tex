@@ -1,0 +1,25 @@
+\section{High dimensional hi-jinx}
+
+\begin{enumerate}
+\item Intra-class distance. \begin{align*}
+E[(X-X')^{2}]=E[(X^{2}+X'^{2}-2XX']=E[X^{2}]+E[X'^{2}]-2E[X]E[X'] \\
+= & \mu_{1}^{2}+\sigma^{2}+\mu_{1}^{2}+\sigma^{2}-2\mu_{1}^{2}=2\sigma^{2}\end{align*}
+
+\item Inter-class distance. \begin{align*}
+E[(X-X')^{2}]=E[(X^{2}+X'^{2}-2XX']=E[X^{2}]+E[X'^{2}]-2E[X]E[X'] \\
+= & \mu_{1}^{2}+\sigma^{2}+\mu_{2}^{2}+\sigma^{2}-2\mu_{1}\mu_{2}\end{align*}
+
+
+\item Intra-class distance, m-dimensions. \begin{align*}
+\E[\sum_{j=1}^{m}(X_{j}-X'_{j})^{2}]= & \sum_{j=1}^{m}E[(X_{j}-X_{j}^{'})^{2}]\\
+= & 2m\sigma^{2}\end{align*}
+
+
+\item Inter-class distance, m-dimensions. \begin{align*}
+\E[\sum_{j=1}^{m}(X_{j}-X'_{j})^{2}]= & \sum_{j=1}^{m}E[(X_{j}-X_{j}^{'})^{2}]\\
+= & \sum_{j=1}^{m}(\mu_{1j}-\mu_{2j})^{2}+2m\sigma^{2}\end{align*}
+
+\item The ratio of expected intra-class distance to inter-class distance
+is: $2m\sigma^{2}/\mu_{11}^{2}+\mu_{21}^{2}+2m\sigma^{2}$. As $m$
+increases towards $\infty$, this ratio approaches $1$. 
+\end{enumerate}

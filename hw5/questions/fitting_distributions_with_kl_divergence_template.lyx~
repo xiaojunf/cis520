@@ -1,0 +1,144 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options false
+\language english
+\inputencoding latin9
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Logistic regression and Naive Bayes
+\end_layout
+
+\begin_layout Enumerate
+Objective function.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Naive Bayes (g)
+\end_layout
+
+\begin_layout Enumerate
+Logistic regression (c)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Prove logistic regression from Naive Bayes
+\begin_inset Formula $P(Y=1|X)=\frac{1}{1+\exp\{w_{0}+w^{T}X\}}$
+\end_inset
+
+
+\begin_inset Formula \begin{align*}
+P(Y=1|X)= & \ \frac{P(Y=1)P(X|Y=1)}{P(Y=1)P(X|Y=1)+P(Y=0)P(X|Y=0)}\\
+= & \;\frac{1}{1+\exp(\log\frac{P(Y=0)P(X|Y=0)}{P(Y=1)P(X|Y=1)})}\end{align*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Now let's plug in our definitions:
+\begin_inset Formula \begin{align*}
+P(Y=1)= & \ \pi\\
+P(X_{j}|Y=1)= & \;\theta_{j1}^{X_{j}}(1-\theta_{j1})^{1-X_{j}}\\
+P(X_{j}|Y=0)= & \ \theta_{j0}^{X_{j}}(1-\theta_{j0})^{1-X_{j}}\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula \begin{align*}
+\log\frac{P(Y=0)P(X|Y=0)}{P(Y=1)P(X|Y=1)}= & \ \log\frac{P(Y=0)}{P(Y=1)}+\sum_{j}\log\frac{P(X_{j}|Y=0)}{P(X_{j}|Y=1)}\\
+= & \ \log\frac{1-\pi}{\pi}+\sum_{j}\log\frac{\theta_{j1}^{X_{j}}(1-\theta_{j1})^{1-X_{j}}}{\theta_{j0}^{X_{j}}(1-\theta_{j0})^{1-X_{j}}}\\
+= & \ \log\frac{1-\pi}{\pi}+\sum_{j}\log\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j1}(1-\theta_{j0})}X_{j}+\sum_{j}\log\frac{1-\theta_{j0}}{1-\theta_{j1}}\end{align*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The KL divergence between two Multinomials is: 
+\begin_inset Formula $KL(p(x)||q(x))=\sum_{i\; odd}\beta log\frac{\beta}{\theta_{i}}+\sum_{i\; even}\alpha log\frac{\alpha}{\theta_{i}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The values 
+\begin_inset Formula $\alpha=\frac{(\prod_{i=even}\theta_{i}/\prod_{i=odd}\theta_{i})^{1/n}}{n((\prod_{i=even}\theta_{i}/\prod_{i=odd}\theta_{i})^{1/n}+1)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta=\frac{1}{n((\prod_{i=even}\theta_{i}/\prod_{i=odd}\theta_{i})^{1/n}+1)}$
+\end_inset
+
+ minimize 
+\begin_inset Formula $KL(p(x)||q(x))$
+\end_inset
+
+.
+ 
+\begin_inset Formula \begin{align*}
+\textrm{Lagrangian}\;\;\mathcal{L}= & \; KL(p(x)||q(x))+\lambda(n(\alpha+\beta)-1)\\
+= & \;\sum_{i=even}\alpha\log\frac{\alpha}{\theta_{i}}+\sum_{i=odd}\beta\log\frac{\beta}{\theta_{i}}+\lambda(n(\alpha+\beta)-1)\\
+\frac{\partial}{\partial\alpha} & \mathcal{L}=\sum_{i=odd}\log\frac{\beta}{\theta_{i}}+n+\lambda n=0\\
+\frac{\partial}{\partial\beta} & \mathcal{L}=\sum_{i=even}\log\frac{\alpha}{\theta_{i}}+n+\lambda n=0\\
+\frac{\partial}{\partial\lambda} & \mathcal{L}=n(\alpha+\beta)-1=0\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

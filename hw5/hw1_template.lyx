@@ -73,21 +73,21 @@ Xiaojun Feng
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "questions/high_dimensional_hi-jinx_template.lyx"
+filename "questions/SVMs.lyx"
 
 \end_inset
 
  
 \begin_inset CommandInset include
 LatexCommand input
-filename "questions/fitting_distributions_with_kl_divergence_template.lyx"
+filename "questions/vc_dimention.lyx"
 
 \end_inset
 
  
 \begin_inset CommandInset include
 LatexCommand input
-filename "questions/generative_conditional_independence_template.lyx"
+filename "questions/online_learining.lyx"
 
 \end_inset
 

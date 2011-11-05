@@ -60,7 +60,7 @@ We mark the 2k points in an increasing way
 \end_inset
 
 , and 
-\begin_inset Formula $\delta_{i}=\frac{x_{i+1}-x_{i}}{2},\ and\ 0<\delta<min\delta_{i}$
+\begin_inset Formula $\delta_{i}=\frac{x_{i+1}-x_{i}}{2},\ and\ \delta=min\delta_{i}$
 \end_inset
 
  and also k incrasing intervals 
@@ -142,10 +142,6 @@ First prove
 \begin_inset Formula $[x_{11},x_{12},...,x_{1n}],\ [x_{21},x_{22},...,x_{2n}]$
 \end_inset
 
-,
-\begin_inset Formula $\delta_{i}=\frac{|x_{1i}-x_{2i}|}{2},0<\delta<min\delta_{i}$
-\end_inset
-
 we can achieve all 1s setting the intervals in every dimention as 
 \begin_inset Formula $a_{i}=min(x_{1i},x_{2i})-\delta$
 \end_inset
@@ -154,58 +150,7 @@ we can achieve all 1s setting the intervals in every dimention as
 \begin_inset Formula $b_{i}=max(x_{1i},x_{2i})+\delta$
 \end_inset
 
-, so that the two points can be covered in all dimension.
- We can achieve all 0s by setting the intervals simply not including any
- point.
- If we achieve single 1, either 
-\begin_inset Formula $x_{1}\ or\ x_{2},$
-\end_inset
-
-without lose general, suppose 
-\begin_inset Formula $x_{1}$
-\end_inset
-
-is labeled 1we can set 
-\begin_inset Formula $a_{i}=x_{1i}-\delta,b_{i}=x_{1i}+\delta$
-\end_inset
-
-, since 
-\begin_inset Formula $|x_{2i}-x_{1i}|>2\delta>\delta$
-\end_inset
-
-,so 
-\begin_inset Formula $x_{2i}\notin[a_{i},b_{i}]$
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
-Second prove 
-\begin_inset Formula $VC(H)\leq2$
-\end_inset
-
-, suppose there are 3 points, 
-\begin_inset Formula $h(x_{1})=1,h(x_{2})=0,h(x_{3})=1$
-\end_inset
-
-,and we arrange the 3 points so that 
-\begin_inset Formula $\exists i,x_{1i}<x_{2i}<x_{3i}$
-\end_inset
-
-, in this case since 
-\begin_inset Formula $x_{1i}\in[a_{i},b_{i}]\ x_{2i}\notin[a_{i},b_{i}]$
-\end_inset
-
- and 
-\begin_inset Formula $x_{3i}\in[a_{i},b_{i}],$
-\end_inset
-
- 
-\begin_inset Formula $[a_{i},b_{i}]$
-\end_inset
-
- cannot be closed interval, which generate the contradiction.
+, 
 \end_layout
 
 \begin_layout Enumerate

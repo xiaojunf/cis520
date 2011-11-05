@@ -331,34 +331,9 @@ Prove or disprove each claime
 
 \begin_deeper
 \begin_layout Enumerate
-Will not change, since
-\begin_inset Formula \begin{eqnarray*}
-k(x_{i}^{'},x_{j}^{'}) & = & e^{-\frac{1}{2}(x_{i}+x_{0}-x_{j}-x_{0})^{2}}=e^{-\frac{1}{2}(x_{i}-x_{j})^{2}}=k(x_{i},x_{j})\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Will not change, since
-\begin_inset Formula \begin{eqnarray*}
-k(x_{i}^{'},x_{j}^{'}) & = & e^{-\frac{1}{2}(-x_{i}+x_{j})^{2}}=e^{-\frac{1}{2}(x_{i}-x_{j})^{2}}=k(x_{i},x_{j})\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-It will change, since
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Formula \begin{eqnarray*}
-k(x_{i}^{'},x_{j}^{'}) & = & e^{-\frac{1}{2}(ax_{i}-ax_{j})^{2}}=e^{-\frac{1}{2}a^{2}(x_{i}-x_{j})^{2}}\neq k(x_{i},x_{j})\end{eqnarray*}
-
+Will not.
+  
+\begin_inset Formula $k(x_{i}^{'},x_{j}^{'})=e^{-\frac{1}{2}(x_{i}+x_{0}-x_{j}-x_{0})^{2}}=e^{-\frac{1}{2}(x_{i}-x_{j})^{2}}$
 \end_inset
 
 

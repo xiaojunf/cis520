@@ -46,11 +46,10 @@
 SVMs
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Subsection
 Finite Features
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
 \begin_inset Formula $\phi(u)=(u,u^{2})$
 \end_inset
@@ -290,12 +289,10 @@ Both the hyperlane and margin will not change, since the distance between
  support vector
 \end_layout
 
-\end_deeper
-\begin_layout Enumerate
+\begin_layout Subsection
 Infinite Features Spaces and Kernel Magic
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
 If the dataset is consistenct, then there is no finite set of points that
  cannot be linearly seperated.
@@ -316,55 +313,12 @@ a & = & \phi_{\infty}(x_{1})\\
 b & = & \phi_{\infty}(x_{2})\\
 k(a,b) & = & \sum_{i=1}^{\infty}a_{i}b_{i}\\
  & = & e^{-\frac{x_{1}^{2}}{2}}e^{-\frac{x_{2}^{2}}{2}}+x_{1}x_{2}e^{-\frac{x_{1}^{2}}{2}}e^{-\frac{x_{2}^{2}}{2}}+...+\frac{x_{1}^{i}}{\sqrt{i!}}*\frac{x_{2}^{i}}{\sqrt{i!}}e^{-\frac{x_{1}^{2}}{2}}e^{-\frac{x_{2}^{2}}{2}}+...\\
- & = & e^{-\frac{x_{1}^{2}}{2}}{}^{-\frac{x_{2}^{2}}{2}}(1+x_{1}x_{2}+...+\frac{(x_{1}x_{2})^{i}}{i!}+...)\\
- & = & e^{-\frac{x_{1}^{2}}{2}}{}^{-\frac{x_{2}^{2}}{2}}e^{x_{1}x_{2}}\\
- & = & e^{-\frac{1}{2}(x_{1}-x_{2})^{2}}\end{eqnarray*}
+ & = & e^{-\frac{x_{1}^{2}}{2}}{}^{-\frac{x_{2}^{2}}{2}}(1+x_{1}x_{2}+...+\frac{(x_{1}x_{2}}{i!})\end{eqnarray*}
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Enumerate
-Prove or disprove each claime
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Will not change, since
-\begin_inset Formula \begin{eqnarray*}
-k(x_{i}^{'},x_{j}^{'}) & = & e^{-\frac{1}{2}(x_{i}+x_{0}-x_{j}-x_{0})^{2}}=e^{-\frac{1}{2}(x_{i}-x_{j})^{2}}=k(x_{i},x_{j})\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Will not change, since
-\begin_inset Formula \begin{eqnarray*}
-k(x_{i}^{'},x_{j}^{'}) & = & e^{-\frac{1}{2}(-x_{i}+x_{j})^{2}}=e^{-\frac{1}{2}(x_{i}-x_{j})^{2}}=k(x_{i},x_{j})\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-It will change, since
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Formula \begin{eqnarray*}
-k(x_{i}^{'},x_{j}^{'}) & = & e^{-\frac{1}{2}(ax_{i}-ax_{j})^{2}}=e^{-\frac{1}{2}a^{2}(x_{i}-x_{j})^{2}}\neq k(x_{i},x_{j})\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\end_deeper
 \end_body
 \end_document
